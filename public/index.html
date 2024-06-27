@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eCommerce Home Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header, footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+        .header-content, .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 15px;
+            align-items: center; /* Ensure alignment with the hamburger menu */
+        }
+        nav ul li {
+            display: flex; /* Ensure flexbox layout */
+            align-items: center; /* Center-align items */
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px; /* Default font size for nav items */
+        }
+        .main-content {
+            text-align: center;
+            padding: 20px;
+        }
+        .product-grid {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        .product {
+            background-color: #f8f8f8;
+            border: 1px solid #ccc;
+            padding: 20px;
+            text-align: center;
+        }
+        .product img {
+            width: 100px;
+            height: 100px;
+        }
+        .footer-content a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        .category-menu {
+            position: relative;
+            display: inline-block;
+        }
+        .category-menu-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 200px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+        .category-menu-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+        .category-menu-content a:hover {
+            background-color: #f1f1f1;
+        }
+        .show {
+            display: block;
+        }
+        .hamburger {
+            cursor: pointer;
+            font-size: 14px; /* Reduced font size for Categories */
+            display: flex;
+            align-items: center;
+            color: white; /* Ensure color matches other nav items */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">Logo</div>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li>
+                        <div class="category-menu">
+                            <div class="category-menu">
+                                <div class="hamburger" onclick="toggleMenu()">☰ <span>Categories</span></div>
+                                <div class="category-menu-content" id="categoryMenu">
+                                    <a href="category-page.html?category=Naivas Supermarkets">Naivas Supermarkets</a>
+                                    <a href="category-page.html?category=Quick Mart">Quick Mart</a>
+                                    <a href="category-page.html?category=Furniture">Furniture</a>
+                                    <a href="category-page.html?category=Construction Materials">Construction Materials</a>
+                                    <!-- Add more categories as needed -->
+                                </div>
+                            </div>
+                    </li>
+                    <li><a href="#">Deals</a></li>
+                    <li><a href="#">Personal Shopper</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main class="main-content">
+        <h1>Featured Products</h1>
+        <div class="product-grid">
+            <div class="product">
+                <img src="https://via.placeholder.com/100" alt="Product 1">
+                <p>Product 1</p>
+                <button class="add-to-cart" id="addToCartButton"><a href="cart.html">Add to Cart</a></button>
+                <button class="buy-now"><a href="cart.html">Buy Now</a></button>
+            </div>
+            <div class="product">
+                <img src="https://via.placeholder.com/100" alt="Product 2">
+                <p>Product 2</p>
+                <button class="add-to-cart" id="addToCartButton"><a href="cart.html">Add to Cart</a></button>
+                <button class="buy-now"><a href="cart.html">Buy Now</a></button>
+            </div>
+            <div class="product">
+                <img src="https://via.placeholder.com/100" alt="Product 3">
+                <p>Product 3</p>
+                <button class="add-to-cart" id="addToCartButton"><a href="cart.html">Add to Cart</a></button>
+                <button class="buy-now"><a href="cart.html">Buy Now</a></button>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="footer-content">
+            <a href="#">About Us</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Help Center</a>
+        </div>
+    </footer>
+    <script>
+        function addToCart() {
+            console.log("Product added to cart");
+            // You can add additional functionality here, such as updating the cart icon in the header
+        }
+
+        function buyNow() {
+            // Redirect to the checkout page
+            window.location.href = "checkout-page.html";
+        }
+
+        function toggleMenu() {
+            document.getElementById("categoryMenu").classList.toggle("show");
+        }
+
+       
+        // Close the dropdown if the user clicks outside of it
+        window.onclick = function(event) {
+            if (!event.target.matches('.hamburger') && !event.target.matches('.hamburger span')) {
+                var dropdowns = document.getElementsByClassName("category-menu-content");
+                for (var i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>

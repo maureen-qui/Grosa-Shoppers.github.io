@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Add Product</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        .form-container {
+            background-color: white;
+            padding: 20px;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-container h1 {
+            margin-top: 0;
+        }
+        .form-container input, .form-container button {
+            display: block;
+            width: 100%;
+            margin: 10px 0;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>Add New Product</h1>
+        <input type="text" id="product-name" placeholder="Product Name">
+        <input type="text" id="product-image" placeholder="Product Image URL">
+        <input type="text" id="product-description" placeholder="Product Description">
+        <button onclick="addProduct()">Add Product</button>
+    </div>
+
+    <script>
+        function addProduct() {
+            const name = document.getElementById('product-name').value;
+            const image = document.getElementById('product-image').value;
+            const description = document.getElementById('product-description').value;
+
+            if (name && image && description) {
+                const products = JSON.parse(localStorage.getItem('products')) || [];
+                products.push({ name, image, description });
+                localStorage.setItem('products', JSON.stringify(products));
+                alert('Product added successfully');
+                document.getElementById('product-name').value = '';
+                document.getElementById('product-image').value = '';
+                document.getElementById('product-description').value = '';
+            } else {
+                alert('Please fill all fields');
+            }
+        }
+    </script>
+</body>
+</html>

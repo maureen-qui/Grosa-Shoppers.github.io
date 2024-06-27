@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eCommerce Category Page</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.product-page {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.product-image-carousel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.product-image-carousel img {
+    max-width: 100%;
+    height: auto;
+    transition: transform 0.5s ease;
+}
+
+.product-image-carousel img:hover {
+    transform: scale(1.1);
+}
+
+
+.product-details {
+    margin-top: 20px;
+}
+
+.product-details h2 {
+    margin-bottom: 10px;
+}
+
+.ratings-reviews {
+    margin-top: 20px;
+}
+
+.quantity-selector {
+    margin-top: 10px;
+}
+
+.add-to-cart,
+.buy-now {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+    display: inline-block;
+    text-decoration: none;
+}
+
+.tab-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.tab-links li {
+    display: inline;
+    margin-right: 10px;
+}
+
+.tab-links li a {
+    text-decoration: none;
+    color: #333;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.tab-links li.active a {
+    background-color: #333;
+    color: white;
+}
+
+.tab-content {
+    display: none;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-top: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+}
+    </style>
+</head>
+<body>
+    <header>
+        <!-- Header content -->
+    </header>
+    <div class="product-page">
+        <div class="product-image-carousel">
+            <!-- Product image carousel -->
+        </div>
+        <div class="product-details">
+            <h2>Product Name</h2>
+            <p>Price: $XX.XX</p>
+            <p>Vendor: Vendor Name</p>
+            <div class="ratings-reviews">
+                <!-- Ratings and reviews section -->
+            </div>
+            <div class="quantity-selector">
+                <!-- Quantity selector -->
+            </div>
+            <button class="add-to-cart" id="addToCartButton"><a href="cart.html">Add to Cart</a></button>
+            <button class="buy-now"><a href="cart.html">Buy Now</a></button>
+        </div>
+        <div class="product-tabs">
+            <ul class="tab-links">
+                <li class="active"><a href="#description">Description</a></li>
+                <li><a href="#reviews">Reviews</a></li>
+            </ul>
+            <div class="tab-content" id="description">
+                <!-- Product description -->
+            </div>
+            <div class="tab-content" id="reviews">
+                <!-- Reviews section -->
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="footer-content">
+            <a href="#">About Us</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Help Center</a>
+        </div><!-- Footer content -->
+    </footer>
+    <script>
+    
+        document.addEventListener("DOMContentLoaded", function() {
+            const tabLinks = document.querySelectorAll('.tab-links a');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+        tabLinks.forEach(function(link) {
+            tabLink.addEventListener('click', function(event) {
+        // Prevent default link behavior
+        event.preventDefault();
+
+        // Get all tab links and tab content elements
+        var tabLinks = document.querySelectorAll('.tab-links a');
+        var tabContents = document.querySelectorAll('.tab-content');
+
+        // Hide all tab contents
+        tabContents.forEach(function(tabContent) {
+            tabContent.style.display = 'none';
+        });
+
+        // Show the corresponding tab content
+        tabContents[index].style.display = 'block';
+    });
+
+        link.addEventListener('click', function(event) {
+            event.preventDefault();
+            const targetId = this.getAttribute('href').substring(1);
+            tabContents.forEach(function(content) {
+                content.classList.remove('active');
+            });
+        document.getElementById(targetId).classList.add('active');
+            tabLinks.forEach(function(link) {
+                link.parentNode.classList.remove('active');
+            });
+            this.parentNode.classList.add('active');
+        });
+    });
+});
+
+    </script>
+</body>
+</html>
